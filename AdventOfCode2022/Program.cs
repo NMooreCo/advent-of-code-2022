@@ -36,6 +36,15 @@ namespace AdventOfCode2022
             Console.WriteLine($"Day 4:");
             d4.FullyContainsPairs("ReferenceFiles/Day4.txt");
             d4.FullyContainsPairs2("ReferenceFiles/Day4.txt");
+            
+            
+            var d5 = new Day5();
+            Console.WriteLine($"Day 5 Example:");
+            d5.DetermineStacks("ReferenceFiles/Day5Example.txt");
+            d5.DetermineStacks2("ReferenceFiles/Day5Example.txt");
+            Console.WriteLine($"Day 5:");
+            d5.DetermineStacks("ReferenceFiles/Day5.txt");
+            d5.DetermineStacks2("ReferenceFiles/Day5.txt");
         }
     }
 }

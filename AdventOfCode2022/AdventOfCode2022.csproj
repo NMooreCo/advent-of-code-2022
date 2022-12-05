@@ -43,6 +43,7 @@
         <Compile Include="Day2.cs" />
         <Compile Include="Day3.cs" />
         <Compile Include="Day4.cs" />
+        <Compile Include="Day5.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
@@ -73,6 +74,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="ReferenceFiles\Day4Example.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="ReferenceFiles\Day5.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="ReferenceFiles\Day5Example.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
