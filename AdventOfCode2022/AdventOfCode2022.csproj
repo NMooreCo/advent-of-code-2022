@@ -52,6 +52,7 @@
       <Content Include="Puzzles\Day2.txt" />
       <Content Include="Puzzles\Day3.txt" />
       <Content Include="Puzzles\Day4.txt" />
+      <Content Include="Puzzles\Day5.txt" />
       <Content Include="ReferenceFiles\Day1.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>

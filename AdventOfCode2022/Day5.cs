@@ -18,13 +18,11 @@ namespace AdventOfCode2022
             }
             _stacks[realC].Add(c);
         }
-        public void DetermineStacks(string file)
-        {
-            _stacks.Clear();
-            var lines = File.ReadAllLines(file);
 
+        private int SetupStacks(string[] stackInfo)
+        {
             var counter = 0;
-            foreach (var line in lines)
+            foreach (var line in stackInfo)
             {
                 if (string.IsNullOrWhiteSpace(line))
                 {
@@ -35,14 +33,14 @@ namespace AdventOfCode2022
                 counter++;
             }
 
-            var numberOfStacks = lines[counter].Split(new[] { "   " }, StringSplitOptions.None);
+            var numberOfStacks = stackInfo[counter].Split(new[] { "   " }, StringSplitOptions.None);
 
             for (var j = 0; j < counter; j++)
             {
                 var columnCounter = 0;
                 for (var i = 0; i < numberOfStacks.Length * 4; i += 4)
                 {
-                    var data = lines[j][i + 1];
+                    var data = stackInfo[j][i + 1];
                     if (data == ' ')
                     {
                         columnCounter++;
@@ -54,7 +52,14 @@ namespace AdventOfCode2022
                 }
             }
 
-            string topStacks;
+            return counter;
+        }
+        
+        public void DetermineStacks(string file)
+        {
+            _stacks.Clear();
+            var lines = File.ReadAllLines(file);
+            var counter = SetupStacks(lines);
 
             foreach (var line in lines.Skip(counter + 2))
             {
@@ -71,18 +76,9 @@ namespace AdventOfCode2022
                     _stacks[to].Insert(0, _stacks[from].First());
                     _stacks[from].RemoveAt(0);
                 }
-                
-                topStacks = string.Empty;
-                for(var p =1;p<=_stacks.Count;p++)
-                {
-                    if(_stacks[p].Count > 0)
-                        topStacks += _stacks[p].First().ToString();
-                }
-            
-                Console.WriteLine($"Part1: {topStacks}");
             }
 
-            topStacks = string.Empty;
+            var topStacks = string.Empty;
             for(var i =1;i<=_stacks.Count;i++)
             {
                 topStacks += _stacks[i].First().ToString();
@@ -91,43 +87,11 @@ namespace AdventOfCode2022
             Console.WriteLine($"Part1: {topStacks}");
         }
         
-          public void DetermineStacks2(string file)
+        public void DetermineStacks2(string file)
         {
             _stacks.Clear();
             var lines = File.ReadAllLines(file);
-
-            var counter = 0;
-            foreach (var line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                {
-                    counter--;
-                    break;
-                }
-
-                counter++;
-            }
-
-            var numberOfStacks = lines[counter].Split(new[] { "   " }, StringSplitOptions.None);
-
-            for (var j = 0; j < counter; j++)
-            {
-                var columnCounter = 0;
-                for (var i = 0; i < numberOfStacks.Length * 4; i += 4)
-                {
-                    var data = lines[j][i + 1];
-                    if (data == ' ')
-                    {
-                        columnCounter++;
-                        continue;
-                    }
-                    
-                    AddToDict(columnCounter, data);
-                    columnCounter++;
-                }
-            }
-
-            string topStacks;
+            var counter = SetupStacks(lines);
 
             foreach (var line in lines.Skip(counter + 2))
             {
@@ -144,18 +108,9 @@ namespace AdventOfCode2022
                     _stacks[to].Insert(0, _stacks[from][numToMove-1-i]);
                     _stacks[from].RemoveAt(numToMove-1-i);
                 }
-                
-                topStacks = string.Empty;
-                for(var p =1;p<=_stacks.Count;p++)
-                {
-                    if(_stacks[p].Count > 0)
-                        topStacks += _stacks[p].First().ToString();
-                }
-            
-                Console.WriteLine($"Part1: {topStacks}");
             }
 
-            topStacks = string.Empty;
+            var topStacks = string.Empty;
             for(var i =1;i<=_stacks.Count;i++)
             {
                 topStacks += _stacks[i].First().ToString();
