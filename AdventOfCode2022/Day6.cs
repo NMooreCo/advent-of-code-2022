@@ -12,21 +12,17 @@ namespace AdventOfCode2022
             var lines = File.ReadAllLines(file);
             foreach (var line in lines)
             {
-                var charStream = new List<char>(); 
-                var count = 0;
-                foreach (var c in line)
+                var charStream = new List<char>();
+                for (var i = 0; i < line.Count(); i++)
                 {
-                    count++;
                     if (charStream.Count >= numberOfChars)
-                    {
                         charStream.RemoveAt(0);
-                    }
-                    
-                    charStream.Add(c);
+
+                    charStream.Add(line[i]);
 
                     if (charStream.Distinct().Count() < numberOfChars) continue;
                     
-                    Console.WriteLine($"Part 1: {count}");
+                    Console.WriteLine($"Part 1: {i + 1}");
                     break;
                 }
             }
